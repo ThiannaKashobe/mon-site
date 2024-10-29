@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Contacts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body class="flex flex-col h-screen bg-gray-100">
+
+    <div class="flex flex-col md:flex-row flex-grow">
+        
+        <div class="bg-gray-200 w-full md:w-1/4 p-4 shadow-lg">
+            <div class="flex items-center mb-4">
+                <img id="hamburger" src="image/télécharger.jpeg" alt="Menu" class="w-10 h-10 cursor-pointer">
+                <img src="image/Google-Contacts .png" alt="Contacts Icon" class="w-10 h-10 ml-2">
+                <span class="ml-2 text-lg font-semibold">Contacts</span>
+            </div>
+
+            <div id="menuOptions" class="hidden flex flex-col bg-gray-200 p-4 rounded shadow">
+                <button class="bg-blue-300 text-black flex items-center py-2 px-4 mb-3 rounded hover:bg-blue-600" onclick="toggleContactForm()">
+                    <img src="image/lil.png" class="w-5 h-5 mr-2"> Contacts
+                </button>
+                <button class="bg-blue-300 text-black py-2 px-4 mb-3 rounded hover:bg-blue-600" onclick="toggleContactForm()">
+                    + Créer un Contact
+                </button>
+                <div class="text-left mb-2">
+                    <button onclick="addLabel()" class="text-black hover:text-blue-500">
+                        <span>Libellé+</span>
+                    </button>
+                </div>
+                
+                <div class="flex items-center mb-2">
+                    <img src="image/téléchargement9.png" class="w-4 h-4">
+                    <span class="ml-2">Fréquence</span>
+                </div>
+                <div class="flex items-center mb-2">
+                    <img src="image/R (1).jpeg" class="w-4 h-4">
+                    <span class="ml-2">Famille <span id="familyCount">(0)</span></span>
+                </div>
+                <div class="flex items-center mb-2">
+                    <img src="image/R (1).jpeg" class="w-4 h-4">
+                    <span class="ml-2">Amis <span id="friendsCount">(0)</span></span>
+                </div>
+            </div>
+
+            <div id="labelList"></div>
+        </div>
+
+        <div class="w-full md:w-3/4 p-4">
+            <form class="mb-3">
+                <input class="border border-gray-300 rounded w-full p-2" type="text" placeholder="Rechercher des contacts" id="searchInput">
+            </form>
+            <div class="grid grid-cols-6 gap-4 font-semibold mb-3">
+                <span>Titre</span>
+                <span>Email</span>
+                <span>Téléphone</span>
+                <span>Fonction</span>
+                <span>Libellé</span>
+                <span>Actions</span>
+            </div>
+
+            <hr class="mb-4">
+            <div id="contact-list"></div>
+
+            <div id="contactForm" class="hidden mt-4 bg-white p-4 rounded shadow">
+                <h3 class="font-semibold mb-2">Ajouter un Contact</h3>
+                <form id="form" onsubmit="handleContactFormSubmit(event)">
+                    <input type="text" id="title" placeholder="Titre" required class="border border-gray-300 rounded w-full p-2 mb-2">
+                    <input type="email" id="email" placeholder="Email" required class="border border-gray-300 rounded w-full p-2 mb-2">
+                    <input type="text" id="phone" placeholder="Téléphone" required class="border border-gray-300 rounded w-full p-2 mb-2">
+                    <input type="text" id="job" placeholder="Fonction" required class="border border-gray-300 rounded w-full p-2 mb-2">
+                    <input type="text" id="label" placeholder="Libellé" required class="border border-gray-300 rounded w-full p-2 mb-2">
+                    <div class="flex mb-2">
+                        <label class="mr-4"><input type="radio" name="type" value="Famille" required> Famille</label>
+                        <label><input type="radio" name="type" value="Amis"> Amis</label>
+                    </div>
+                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
+                    <button type="button" onclick="toggleContactForm()" class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600">Annuler</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
